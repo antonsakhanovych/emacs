@@ -9,13 +9,12 @@
 (require 'ansi-color)
 
 (defun prog/colorize-compilation-buffer ()
-  (toggle-read-only)
-  (ansi-color-apply-on-region compilation-filter-start (point))
-  (toggle-read-only))
+  (ansi-color-apply-on-region compilation-filter-start (point)))
 (add-hook 'compilation-filter-hook 'prog/colorize-compilation-buffer)
 
-(rc/require 'paredit)
-(add-hook 'prog-mode-hook 'enable-paredit-mode)
+(rc/require 'smartparens)
+(require 'smartparens-config)
+(add-hook 'prog-mode-hook #'smartparens-mode)
 
 (rc/require 'tree-sitter)
 (rc/require 'tree-sitter-langs)
@@ -33,7 +32,7 @@
 (defun prog/whitespace-handler ()
   (interactive)
   (whitespace-mode 1)
-  (add-to-list 'write-file-functions) 'delete-trailing-whitespace)
+  (add-to-list 'write-file-functions 'delete-trailing-whitespace))
 
 (add-hook 'prog-mode-hook 'prog/whitespace-handler)
 
@@ -47,4 +46,3 @@
  'go-mode
  'lua-mode
  'markdown-mode)
-

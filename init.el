@@ -9,5 +9,3 @@
 
 (rc/require 'gruvbox-theme)
 (load-theme 'gruvbox t)
-
-(require 'dired-x)

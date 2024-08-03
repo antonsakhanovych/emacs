@@ -36,10 +36,11 @@
 
 ;; grep command stolen from here:
 ;; https://stegosaurusdormant.com/emacs-ripgrep/
+(require 'grep)
 (grep-apply-setting
- 'grep-find-command
- '("rg -n -H --no-heading -e '' $(git rev-parse --show-toplevel || pwd)" . 27)
- )
+  'grep-find-command
+  '("rg -n -H --no-heading -e '' $(git rev-parse --show-toplevel || pwd)" . 27)
+  )
 
 (global-set-key (kbd "C-x C-g") 'grep-find)
 
