@@ -37,19 +37,26 @@
 ;; grep command stolen from here:
 ;; https://stegosaurusdormant.com/emacs-ripgrep/
 (require 'grep)
+
+;; grep
 (grep-apply-setting
-  'grep-find-command
-  '("rg -n -H --no-heading -e '' $(git rev-parse --show-toplevel || pwd)" . 27)
-  )
+ 'grep-command "rg --color=auto --null -nH --no-heading -e ")
+;; lgrep
+(grep-apply-setting
+ 'grep-template "rg --color=auto --null --no-heading -g '!*/' -e <R> <D>")
+;; rgrep
+(grep-apply-setting
+ 'grep-find-template "rg --color=auto --null -nH --no-heading -e <R> <D>")
 
-(global-set-key (kbd "C-x C-g") 'grep-find)
+;; grep-find
+(grep-apply-setting
+ 'grep-find-command
+ '("rg --color=auto -n -H --no-heading -e '' $(git rev-parse --show-toplevel || pwd)" . 40))
 
 
 
 
-
-
-
-
-
-
+(global-set-key (kbd "C-x C-g g") 'grep)
+(global-set-key (kbd "C-x C-g l") 'lgrep)
+(global-set-key (kbd "C-x C-g r") 'rgrep)
+(global-set-key (kbd "C-x C-g f") 'grep-find)
