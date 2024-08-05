@@ -21,6 +21,7 @@
   (ansi-color-apply-on-region compilation-filter-start (point)))
 (add-hook 'compilation-filter-hook 'prog/colorize-compilation-buffer)
 
+
 (rc/require 'smartparens)
 (require 'smartparens-config)
 (add-hook 'prog-mode-hook #'smartparens-mode)
@@ -39,9 +40,19 @@
 ;; (require 'simpc-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
 
+(rc/require 'slime)
+(setq inferior-lisp-program "sbcl")
+
 (rc/require
  'rust-mode
  'typescript-mode
  'go-mode
  'lua-mode
  'markdown-mode)
+
+(defun prog/set-up-whitespace-handling ()
+  (interactive)
+;;  (whitespace-mode 1)
+  (add-to-list 'write-file-functions #'delete-trailing-whitespace))
+
+(add-hook 'prog-mode-hook #'prog/set-up-whitespace-handling)
