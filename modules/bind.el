@@ -1,3 +1,4 @@
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 ;; zoom in/out like we do everywhere else.
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
@@ -54,9 +55,27 @@
  '("rg --color=auto -n -H --no-heading -e '' $(git rev-parse --show-toplevel || pwd)" . 40))
 
 
-
-
 (global-set-key (kbd "C-x C-g g") 'grep)
 (global-set-key (kbd "C-x C-g l") 'lgrep)
 (global-set-key (kbd "C-x C-g r") 'rgrep)
 (global-set-key (kbd "C-x C-g f") 'grep-find)
+
+(rc/require 'olivetti)
+(require 'olivetti)
+
+(defun distraction-free ()
+    "Distraction-free writing environment using Olivetti package."
+    (interactive)
+    (if (equal olivetti-mode nil)
+        (progn
+          (window-configuration-to-register 1)
+          (delete-other-windows)
+          (text-scale-set 2)
+          (olivetti-mode t))
+      (progn
+        (if (eq (length (window-list)) 1)
+            (jump-to-register 1))
+        (olivetti-mode 0)
+        (text-scale-set 0))))
+
+(global-set-key (kbd "<f9>") #'distraction-free)

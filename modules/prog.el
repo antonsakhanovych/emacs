@@ -25,6 +25,7 @@
 (rc/require 'smartparens)
 (require 'smartparens-config)
 (add-hook 'prog-mode-hook #'smartparens-mode)
+(add-hook 'prog-mode-hook #'sp-use-paredit-bindings)
 
 (rc/require 'tree-sitter)
 (rc/require 'tree-sitter-langs)
@@ -40,15 +41,25 @@
 ;; (require 'simpc-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
 
-(rc/require 'slime)
-(setq inferior-lisp-program "sbcl")
+(rc/require 'sly)
+(setq inferior-lisp-program "ros -Q run")
+
+(rc/require 'flycheck)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; Flycheck support
+(rc/require 'flycheck-nim)
+(require 'flycheck-nim)
 
 (rc/require
  'rust-mode
  'typescript-mode
  'go-mode
  'lua-mode
- 'markdown-mode)
+ 'nim-mode
+ 'markdown-mode
+ 'haskell-mode
+ 'hindent)
 
 (defun prog/set-up-whitespace-handling ()
   (interactive)
@@ -56,3 +67,9 @@
   (add-to-list 'write-file-functions #'delete-trailing-whitespace))
 
 (add-hook 'prog-mode-hook #'prog/set-up-whitespace-handling)
+
+;; Haskell
+(add-hook 'haskell-mode-hook 'haskell-indent-mode)
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+(add-hook 'haskell-mode-hook 'haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'hindent-mode)

@@ -32,3 +32,6 @@
 ;; Move customization variables to a separate file and load it
 (setq custom-file (locate-user-emacs-file "custom-vars.el"))
 (load custom-file 'noerror 'nomessage)
+
+(rc/require 'exec-path-from-shell)
+(exec-path-from-shell-initialize)

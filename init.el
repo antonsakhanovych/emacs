@@ -6,6 +6,7 @@
 (load "~/.config/emacs/modules/vars.el")
 (load "~/.config/emacs/modules/prog.el")
 (load "~/.config/emacs/modules/minibuf.el")
+(load "~/.config/emacs/modules/org.el")
 
 (rc/require 'gruvbox-theme)
 (load-theme 'gruvbox t)
