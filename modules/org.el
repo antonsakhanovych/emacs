@@ -58,6 +58,8 @@
          "** TODO %?\nDEADLINE: %^T\n")
         ("th" "Homework" entry (file "~/Org/Tasks.org")
          "** ALMA %?\nDEADLINE: %^T")
+        ("tc" "Class" entry (file "~/Org/Tasks.org")
+         "** ALMA %?\nSCHEDULED: %^T")
         ("y" "Payment" entry (file "~/Org/Inbox.org")
          "** PAY %?\nDEADLINE: %^t\nAmount: %^{Amount}")
         ("m" "Schedule a meeting" entry (file "~/Org/Meets.org")
@@ -67,6 +69,7 @@
         ("p" "Create a project" entry (file "~/Org/Tasks.org")
          "** PROJ %?\nDEADLINE: %^T")
         ))
+
 
 ;; CodeBlocks display
 (setq org-src-fontify-natively t

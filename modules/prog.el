@@ -62,13 +62,6 @@
 (rc/require 'sly)
 (setq inferior-lisp-program "ros -Q run")
 
-(rc/require 'flycheck)
-(add-hook 'after-init-hook #'global-flycheck-mode)
-
-;; Flycheck support
-(rc/require 'flycheck-nim)
-(require 'flycheck-nim)
-
 (rc/require
  'rust-mode
  'typescript-mode
@@ -96,3 +89,7 @@
 
 (rc/require 'elpy)
 (elpy-enable)
+
+
+;; Coq
+(rc/require 'proof-general)
