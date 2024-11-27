@@ -19,11 +19,13 @@
 (setq next-line-add-newlines t)
 (setq confirm-kill-processes nil)
 (setq hscroll-margin 0)
+(setq dired-dwim-target t)
 
 (global-display-line-numbers-mode 1)
 (setq display-line-numbers-type 'relative)
 (global-visual-line-mode t)
 (setq confirm-kill-emacs 'y-or-n-p)
+
 
 ;; modes
 (show-paren-mode 1)

@@ -72,6 +72,14 @@
  'haskell-mode
  'hindent)
 
+;; c3
+(setq treesit-language-source-alist
+  '((c3 "https://github.com/c3lang/tree-sitter-c3")))
+(add-to-list 'treesit-language-source-alist
+  '(c3 "https://github.com/c3lang/tree-sitter-c3"))
+(treesit-install-language-grammar 'c3)
+(require 'c3-ts-mode)
+
 (defun prog/set-up-whitespace-handling ()
   (interactive)
 ;;  (whitespace-mode 1)

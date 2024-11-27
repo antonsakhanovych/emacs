@@ -8,5 +8,6 @@
 (load "~/.config/emacs/modules/minibuf.el")
 (load "~/.config/emacs/modules/org.el")
 
+
 (rc/require 'gruvbox-theme)
 (load-theme 'gruvbox t)
